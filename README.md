@@ -1,5 +1,5 @@
 # Bug reproduction - cell routing
-This contains 2 identical example apps with one different. The zome function `echo_version` returns a string 'example1' in one happ, and a string 'example2' in the other.
+This contains 2 nearly-identical example apps with one difference: The zome function `echo_version` returns a string 'example1' in one happ, and a string 'example2' in the other.
 
 ## Build example apps
 Run ./build-happs.sh
