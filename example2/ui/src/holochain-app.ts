@@ -49,7 +49,8 @@ export class HolochainApp extends LitElement {
 
     return html`
       <main>
-        <h1>Calling "echo_hello" function</h1>
+        <h1>example2 UI</h1>
+        <h2>Calling "echo_hello" function</h2>
 
         <b>Response:</b> 
         <div style="margin-bottom: 50px">${this.response}</div>
