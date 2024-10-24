@@ -1,9 +1,8 @@
 import { LitElement, css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import {
-  AppAgentWebsocket,
-  ActionHash,
-  AppAgentClient,
+  AppWebsocket,
+  AppClient,
 } from '@holochain/client';
 import { provide } from '@lit-labs/context';
 import '@material/mwc-circular-progress';
@@ -19,11 +18,11 @@ export class HolochainApp extends LitElement {
 
   @provide({ context: clientContext })
   @property({ type: Object })
-  client!: AppAgentClient;
+  client!: AppClient;
 
   async firstUpdated() {
     // We pass '' as url because it will dynamically be replaced in launcher environments
-    this.client = await AppAgentWebsocket.connect('', 'example1');
+    this.client = await AppWebsocket.connect({});
 
     try {
       const res = await this.client.callZome({
@@ -36,7 +35,7 @@ export class HolochainApp extends LitElement {
     } catch(e) {
       this.error = JSON.stringify(e);
     }
-   
+
 
     this.loading = false;
   }
@@ -52,10 +51,10 @@ export class HolochainApp extends LitElement {
         <h1>example1 UI</h1>
         <h2>Calling "echo_hello" function</h2>
 
-        <b>Response:</b> 
+        <b>Response:</b>
         <div style="margin-bottom: 50px">${this.response}</div>
 
-        <b>Error:</b> 
+        <b>Error:</b>
         <div>${this.error}</div>
       </main>
     `;
